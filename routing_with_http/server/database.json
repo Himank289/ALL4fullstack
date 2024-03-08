@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "bkname": "Learn Anugular",
+      "bkprice": 700
+    },
+    {
+      "id": 2,
+      "bkname": "Learn OOPS",
+      "bkprice": "200"
+    },
+    {
+      "id": 3,
+      "bkname": "Learn React",
+      "bkprice": 200
+    }
+  ]
+}

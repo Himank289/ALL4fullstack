@@ -1,0 +1,48 @@
+<h3>listbook of all registered books!</h3>
+<button (click)='listbooks()' >List Book Details </button>
+<button (click)='listbooks1()' >List Book Details using async </button>
+@if($bklst1!=null){
+<p>{{$bklst1|async|json}}</p>
+}
+<hr>
+<p>{{$bklst|async|json}}</p>
+<hr>
+@if( this.bookarr.length>0)
+{
+    <input [(ngModel)]="searchText" placeholder="search book by book name">
+<table>
+    <thead>
+        <tr>
+          <th>bookid</th>
+          <th>bookname</th>
+          <th>bookprice</th>
+        </tr>
+    </thead>
+    <tbody>
+    @for (book of bookarr|bkfilter:searchText; track book.id) {
+         <tr>
+           <td>{{book.id}}</td>
+           <td>{{book.bkname}}</td>
+           <td>{{book.bkprice}}</td>
+           <td> <button (click)='delBook(book)'>Delete</button>
+            <td> <button (click)='editBook(book)'>Edit</button>
+         </tr>
+        }
+    </tbody> 
+    </table>
+
+    @if(editflag==true){
+    <div>
+        <hr>
+        <input [(ngModel)]='temp.bkname' placeholder='bookname'/>
+        <input [(ngModel)]='temp.bkprice' placeholder='bookprice' />
+        <button (click)='updateBook(temp)'>Ok</button>
+        <button (click)='cancelBook(temp)'>Cancel</button>
+    </div>
+}
+}
+@else
+{
+    <p>No Book Registered yet!</p>
+}   
+    
